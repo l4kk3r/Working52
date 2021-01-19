@@ -47,6 +47,7 @@ textarea {
     box-shadow: 4px 4px 70px rgba(0, 0, 0, 0.07);
     border-radius: 35px;  
     position: relative;
+    border: none;
     overflow: hidden;
 }
 .add-custom-b {
@@ -73,6 +74,7 @@ textarea {
     text-align: center;
     bottom: 0px;
     font-size: 60px;
+    box-shadow: 0px -20px 60px rgba(0, 0, 0, 0.12);
 }
 .delete-bin {
     width: 16px;
@@ -205,6 +207,7 @@ textarea {
     box-shadow: -4px 4px 15px rgba(0, 0, 0, 0.25);
     border-radius: 50%;
     color: white;
+    margin-left: -20px;
     padding: 10px;
 }
 .tasking {
@@ -216,10 +219,16 @@ textarea {
 .intasking button {
     height: 20px;
 }
+.intasking h3 {
+    text-align: left;
+}
 .add-tasking {
     margin-top: 10px;
 }
 @media (max-width: 600px) {
+    .leftside {
+        padding-top: 60px;
+    }
     .rightside {
         display: none;
     }
@@ -229,17 +238,29 @@ textarea {
     .open-cart {
         position: fixed;
         top: 20px;
-        right: 20px;
+        right: 70px;
+        background: white;
         border-radius: 15px;
         border: none;
         font-size: 15px;
         padding: 5px 10px;
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.07);
     }
     .close-cart {
         border-radius: 15px;
         border: none;
         font-size: 15px;
         padding: 5px 10px;
+        background: white;
+        margin-top: 7px;
+        margin-left: 170px;
+    }
+    .mob-rb {
+        border-radius: 15px;
+        border: none;
+        font-size: 15px;
+        padding: 5px 10px;
+        background: white;
     }
     .mobctask {
         position: absolute;
@@ -253,6 +274,7 @@ textarea {
     .inmobctask {
         border-bottom: 0.5px solid rgba(250, 250, 210, 0.694);
         padding-bottom: 10px;
+        padding-left: 10px;
     }
     .inmobctask h3 {
         font-weight: 400;
@@ -264,6 +286,8 @@ textarea {
         top: 20px;
         right: 20px;
         width: 65%;
+        height: 70vh;
         background-color: #C6AE97;
+        overflow-y: scroll;
     }
 }
