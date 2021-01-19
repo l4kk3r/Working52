@@ -1,0 +1,237 @@
+::-webkit-scrollbar {
+    width: 27px;
+    height: 10px;
+}
+::-webkit-scrollbar-thumb {
+    height: 6px;
+    border: 7px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    -webkit-border-radius: 20px;
+    background-color: #5F5F5F;
+    -webkit-box-shadow: inset 2px 2px 10px rgba(0, 0, 0, 0.25);
+    
+}
+::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
+}
+
+.tasks-field {
+    display: flex;
+    padding: 0px 20px;
+    height: 100vh;
+    justify-content: center;
+}
+.leftside {
+    flex: 50%;
+    border-left: 1px solid lightgray;
+    padding: 20px;
+    overflow-y: scroll;
+    background-color: #F4E8DF;
+}
+textarea:focus {
+    outline: none;
+}
+textarea {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    resize: none;
+    min-height: 3em;
+    background-color: white;
+    padding: 15px 30px;
+    box-shadow: 4px 4px 70px rgba(0, 0, 0, 0.07);
+    border-radius: 35px;  
+    position: relative;
+    overflow: hidden;
+}
+.add-custom-b {
+    border: 1px solid #6b553a;
+    color: #6b553a;
+    border-radius: 50%;
+    background-color: transparent;
+    font-weight: 600;
+    background-color: #C6AE97;
+}
+.rightside {
+    flex: 50%;
+    border-right: 1px solid lightgray;
+    padding: 20px;
+    overflow-y: scroll;
+    position: relative;
+    background-color: #C6AE97;
+}
+.counter {
+    background-color: white;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    position: absolute;
+    width: 150px;
+    text-align: center;
+    bottom: 0px;
+    font-size: 60px;
+}
+.delete-bin {
+    width: 16px;
+    position:absolute;
+    bottom: 10px;
+    right: 25px;
+}
+.statusbar {
+    text-align: center;
+}
+.statusbar h3 {
+    border: 2px solid #6b553a;
+    padding: 20px;
+    display: inline-block;
+    font-size: 15px;
+    margin-bottom: 0;
+}
+.statusbar p {
+    margin-top: 5px;
+}
+.leftct:hover {
+    background-color: rgba(202, 201, 201, 0.836);
+}
+.choosen-task {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: white;
+    padding: 15px 30px;
+    box-shadow: 4px 4px 70px rgba(0, 0, 0, 0.07);
+    border-radius: 35px;  
+    position: relative;
+}
+.totask{
+    display: none;
+}
+.conwrapper {
+    position: absolute;
+    bottom: 45px;
+}
+.confirm-button {
+    position: fixed;
+    right: 50px;
+}
+.leftside label { 
+    font-size: 16px;
+}
+.admin {
+    padding: 20px;
+}
+.intasking {
+    display: flex;
+}
+.addinp {
+    position: relative;
+    height:auto;
+}
+.addinp button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+.addinp textarea {
+    border: none;
+    width: 80%;
+    resize: none;
+}
+.intasking button {
+    border: 1px solid #6b553a;
+    color: #6b553a;
+    border-radius: 10px;
+    background: transparent;
+    margin-left: 10px;
+}
+.leftside input {
+    font-size: 17px;
+    margin-top: 10px;
+}
+.leftside input:focus {
+    outline: none;
+}
+.rightside h3 {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0;
+}
+.remove-button {
+    border: 1px solid #6b553a;
+    color: #6b553a;
+    border-radius: 10px;
+    background: transparent;
+    margin-left: 10px;
+}
+
+.confirm-button {
+    padding: 7px 20px;
+    font-size: 17px;
+    color: #ffe9cd;
+    background-color: #876a48;
+    border: none;
+    border-radius: 17px;
+}
+.confirm-button:disabled {
+    opacity: 0.5;
+}
+.rightside-mobile {
+    display: none;
+}
+.adminput {
+    font-size: 15px;
+    padding: 5px 15px;
+}
+.admin {
+    text-align: center;
+}
+.tasking {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.intasking {
+    align-items: center;
+}
+.intasking button {
+    height: 20px;
+}
+.add-tasking {
+    margin-top: 10px;
+}
+.add-tasking button {
+    font-size: 15px;
+    background-color:  #876a48;
+    color: white;
+    border: 2px solid black;
+    padding: 5px 15px;
+}
+@media (max-width: 600px) {
+    .rightside {
+        display: none;
+    }
+    .rightside-mobile {
+        display: block;
+    }
+    .open-cart {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+    }
+    .mobctask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 100000;
+        background-color: rgba(0, 0, 0, 0.4);
+        width: 100vw;
+        height: 100vh;
+    }
+    .cart-content {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: white;
+    }
+}
