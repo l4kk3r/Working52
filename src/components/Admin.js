@@ -20,14 +20,14 @@ const Admin = () => {
     }
 
     return (
-        <div className='root'>
+        <div className='aroot'>
             <div class='admin'>
                 <div class='tasking'>
                   {tasks.map(task=> <div class='intasking'><h3>{task}</h3><button onClick={() => deleteTasking(task)}>Удалить</button></div>)}
                 </div>
                 <div class='add-tasking'>
                     <input class='adminput' onChange={(e) => setNewTasking(e.target.value)} value={newtasking} type='text' />
-                    <button onClick={() => addNewTasking()}>Добавить</button>
+                    <button class='adminbutton' onClick={() => addNewTasking()}>Ок</button>
                 </div>
             </div>
         </div>
