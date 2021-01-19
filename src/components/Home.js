@@ -67,7 +67,7 @@ const Home = () => {
                 </div>
                 <div class='rightside-mobile'>
                     <button id='openCart' onClick={() => openCart()} class='open-cart'>Открыть</button>
-                    <div id='theCart' style={{display: 'none'}} class='mobctask'><div class='cart-content'><button style={{margin: '0 auto', display: 'none'}} id='closeCart' class='close-cart' onClick={() => closeCart()}>Скрыть</button>{checkedTasks.map((task, i) => {return <div style={{borderRadius: (i == checkedTasks.length - 1) ? '10px' : '0px'}} class='inmobctask'><h3>{task}</h3><button class='mob-rb' onClick={() => deleteTask(task)}>Удалить</button></div>})}</div></div>
+                    <div id='theCart' style={{display: 'none'}} class='mobctask'><div class='cart-content'><button style={{display: 'none'}} id='closeCart' class='close-cart' onClick={() => closeCart()}>Скрыть</button>{checkedTasks.map((task, i) => {return <div style={{borderRadius: (i == checkedTasks.length - 1) ? '10px' : '0px'}} class='inmobctask'><h3>{task}</h3><button class='mob-rb' onClick={() => deleteTask(task)}>Удалить</button></div>})}</div></div>
                 </div>
                 <div class='counter' style={{color: checkedTasks.length === NEEDEDT ? '#0CDC46' : checkedTasks.length < NEEDEDT ? '#FFD662' : '#C41E3A' }}>{checkedTasks.length}</div>
             </div>
