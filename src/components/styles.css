@@ -1,3 +1,6 @@
+body {
+    background-color: #F5F5F5;
+}
 ::-webkit-scrollbar {
     width: 27px;
     height: 10px;
@@ -99,7 +102,7 @@ textarea {
     margin-bottom: 10px;
     background-color: white;
     padding: 15px 30px;
-    box-shadow: 4px 4px 70px rgba(0, 0, 0, 0.07);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.07);
     border-radius: 35px;  
     position: relative;
 }
@@ -110,18 +113,22 @@ textarea {
     position: absolute;
     bottom: 45px;
 }
-.confirm-button {
-    position: fixed;
-    right: 50px;
-}
 .leftside label { 
     font-size: 16px;
 }
 .admin {
     padding: 20px;
+    text-align: center;
 }
 .intasking {
     display: flex;
+    background-color: white;
+    padding: 10px 10px;
+    align-items: center;
+    width: 400px;
+    margin-bottom: 15px;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
 }
 .addinp {
     position: relative;
@@ -167,10 +174,12 @@ textarea {
 .confirm-button {
     padding: 7px 20px;
     font-size: 17px;
-    color: #ffe9cd;
-    background-color: #876a48;
+    color: black;
+    background-color: white;
     border: none;
     border-radius: 17px;
+    position: fixed;
+    right: 50px;
 }
 .confirm-button:disabled {
     opacity: 0.5;
@@ -181,17 +190,27 @@ textarea {
 .adminput {
     font-size: 15px;
     padding: 5px 15px;
+    background: #F4E8DF;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.07);
+    border-radius: 99px;
+    border: none;
+    width: 250px;
 }
-.admin {
-    text-align: center;
+.adminput:focus {
+    outline: none;
+}
+.adminbutton {
+    background: #C6AE97;
+    border: none;
+    box-shadow: -4px 4px 15px rgba(0, 0, 0, 0.25);
+    border-radius: 50%;
+    color: white;
+    padding: 10px;
 }
 .tasking {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.intasking {
+    flex-wrap: wrap;
+    justify-content: space-around;
     align-items: center;
 }
 .intasking button {
@@ -199,13 +218,6 @@ textarea {
 }
 .add-tasking {
     margin-top: 10px;
-}
-.add-tasking button {
-    font-size: 15px;
-    background-color:  #876a48;
-    color: white;
-    border: 2px solid black;
-    padding: 5px 15px;
 }
 @media (max-width: 600px) {
     .rightside {
@@ -218,6 +230,16 @@ textarea {
         position: fixed;
         top: 20px;
         right: 20px;
+        border-radius: 15px;
+        border: none;
+        font-size: 15px;
+        padding: 5px 10px;
+    }
+    .close-cart {
+        border-radius: 15px;
+        border: none;
+        font-size: 15px;
+        padding: 5px 10px;
     }
     .mobctask {
         position: absolute;
@@ -228,10 +250,20 @@ textarea {
         width: 100vw;
         height: 100vh;
     }
+    .inmobctask {
+        border-bottom: 0.5px solid rgba(250, 250, 210, 0.694);
+        padding-bottom: 10px;
+    }
+    .inmobctask h3 {
+        font-weight: 400;
+        font-size: 1em;
+    }
     .cart-content {
         position: fixed;
+        border-radius: 10px;
         top: 20px;
         right: 20px;
-        background-color: white;
+        width: 65%;
+        background-color: #C6AE97;
     }
 }
