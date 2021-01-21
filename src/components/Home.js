@@ -34,6 +34,7 @@ const Home = () => {
     }
     
     const textareaListen = (e) => {
+        e.target.value = e.target.value.replace(/\n/g, "")
         setCustomTask(e.target.value)
         e.target.style.height = 'auto'
         e.target.style.height = e.target.scrollHeight + 2 + "px"
@@ -70,7 +71,7 @@ const Home = () => {
                 <div class='leftside'>
                   <div class='inform'><img class='binfo' src='/binfo.svg' alt='delete-bin'/><p class='info-text'>Всего в баночку помещается 52 свертка с заданиями. Вы можете выбрать как наши варианты из списка ниже, так и добавить свои</p></div>
                   <h2>Все задания</h2>
-                  <textarea id='txtarea' value={customtask} onChange={(e) => textareaListen(e)} onKeyPress={event => {
+                  <textarea maxLength={130} id='txtarea' value={customtask} onChange={(e) => textareaListen(e)} onKeyPress={event => {
                     if (event.key === 'Enter') {
                         addCustom()
                     }
@@ -79,6 +80,7 @@ const Home = () => {
                   {tasks.map((task, i) => {return <div><input type='checkbox' checked={checkedTasks.includes(task) ? true : false} onChange={(e) => handleTask(e)} class='totask' id={i} name='alltasks' value={task} /><label class='choosen-task leftct' for={i}>{task}<img class='delete-bin' src='/badd.svg' alt='delete-bin'/></label></div>})}
                 </div>
                 <div class='rightside'>
+                   <div style={{visibility: 'hidden'}} class='inform'><img class='binfo' src='/binfo.svg' alt='delete-bin'/><p class='info-text'>Всего в баночку помещается 52 свертка с заданиями. Вы можете выбрать как наши варианты из списка ниже, так и добавить свои</p></div>
                    <h2>Выбранные задания</h2>
                    {checkedTasks.map((task, i) => {return <div onClick={() => deleteTask(task)} class='choosen-task leftct'><h3>{task}</h3><img class='delete-bin' src='/bdelete.svg' alt='delete-bin'/></div>})}
                    <div class='conwrapper'><button onClick={() => sendTasks()} style={{cursor: ''}} class='confirm-button'>Подтвердить</button></div>
