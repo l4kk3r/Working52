@@ -20,15 +20,26 @@ body {
     display: none;
 }
 
+header {
+    display: flex;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+}
+header img {
+    height: 40px;
+}
+.root {
+    background: white;
+}
 .tasks-field {
     display: flex;
     padding: 0px 20px;
-    height: 100vh;
+    height: calc(100vh - 60px);
     justify-content: center;
 }
 .leftside {
     flex: 50%;
-    border-left: 1px solid lightgray;
     padding: 20px;
     overflow-y: scroll;
     background-color: #F4E8DF;
@@ -49,6 +60,8 @@ textarea {
     position: relative;
     border: none;
     overflow: hidden;
+    white-space: pre-line;
+    margin-bottom: 10px;
 }
 .add-custom-b {
     border: 1px solid #6b553a;
@@ -60,7 +73,6 @@ textarea {
 }
 .rightside {
     flex: 50%;
-    border-right: 1px solid lightgray;
     padding: 20px;
     overflow-y: scroll;
     position: relative;
@@ -95,8 +107,33 @@ textarea {
 .statusbar p {
     margin-top: 5px;
 }
+.tasks-field h2 {
+    text-transform: uppercase;
+    text-align: center;
+}
+.blink {
+    animation-name: blinker;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(1.0,0,0,1.0);
+    animation-duration: 1s;
+    -webkit-animation-name: blinker;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: cubic-bezier(1.0,0,0,1.0);
+    -webkit-animation-duration: 1s;
+  }
+   
+  @keyframes blinker {
+    from { opacity: 1.0; }
+    to { opacity: 0.0; }
+  }
+   
+  @-webkit-keyframes blinker {
+    from { opacity: 1.0; }
+    to { opacity: 0.0; }
+  }
 .leftct:hover {
     background-color: rgba(202, 201, 201, 0.836);
+    cursor: pointer;
 }
 .choosen-task {
     display: flex;
@@ -107,6 +144,9 @@ textarea {
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.07);
     border-radius: 35px;  
     position: relative;
+}
+.choosen-task img {
+    cursor: pointer;
 }
 .totask{
     display: none;
@@ -172,6 +212,20 @@ textarea {
     background: transparent;
     margin-left: 10px;
 }
+.binfo {
+    width: 14px;
+    position: absolute;
+    top: 3.5px;
+}
+.inform {
+    display: flex;
+    position: relative;
+}
+.inform p {
+    margin: 0;
+    margin-left: 20px;
+    font-size: 14px;
+}
 
 .confirm-button {
     padding: 7px 20px;
@@ -182,6 +236,8 @@ textarea {
     border-radius: 17px;
     position: fixed;
     right: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 .confirm-button:disabled {
     opacity: 0.5;
@@ -245,6 +301,7 @@ textarea {
         font-size: 15px;
         padding: 5px 10px;
         box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.07);
+        top: 80px;
     }
     .close-cart {
         border-radius: 15px;
@@ -279,6 +336,7 @@ textarea {
     .inmobctask h3 {
         font-weight: 400;
         font-size: 1em;
+        color: white;
     }
     .cart-content {
         position: fixed;
@@ -289,5 +347,10 @@ textarea {
         height: 70vh;
         background-color: #C6AE97;
         overflow-y: scroll;
+    }
+    .mob-send {
+        left: 45px;
+        background: #C6AE97;
+        color: white;
     }
 }
