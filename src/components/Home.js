@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import './styles.css'
 
@@ -6,7 +8,7 @@ const Home = () => {
     const [tasks, setTasks] = useState([])
     const [customtask, setCustomTask] = useState([])
     const [checkedTasks, setCheckedTasks] = useState([])
-    const NEEDEDT = 2
+    const NEEDEDT = 52
 
     useEffect(()=>{
         fetch('https://tasks52.herokuapp.com/all-tasks',{method: "get", headers: {"mode":"no-cors", "Access-Control-Allow-Origin": "*"}}).then(ans=> ans.json()).then(realans=> setTasks(realans.tasks))
@@ -35,6 +37,7 @@ const Home = () => {
         setCustomTask(e.target.value)
         e.target.style.height = 'auto'
         e.target.style.height = e.target.scrollHeight + 2 + "px"
+        document.getElementById('txtarea').innerHTML = ""
     }
 
     const openCart = () => {
@@ -49,27 +52,44 @@ const Home = () => {
         document.getElementById('closeCart').style.display = 'none'
     }
 
+    const sendTasks = () => {
+        if (checkedTasks.length < 52) {
+            toast.warn(`Вам не хватает заданий. Вы выбрали ${checkedTasks.length} из 52`)
+        } else if (checkedTasks.length > 52) {
+            toast.error(`Вы превысили допустимое количество выбранных заданий (52)`)
+        }
+    }
+    
     return (
         <div className='root'>
+            <ToastContainer />
+            <header>
+                <img src='/logo.png' alt='logo' />
+            </header>
             <div class='tasks-field'>
                 <div class='leftside'>
-                  {tasks.map((task, i) => {return <div><input type='checkbox' checked={checkedTasks.includes(task) ? true : false} onChange={(e) => handleTask(e)} class='totask' id={i} name='alltasks' value={task} /><label class='choosen-task leftct' for={i}>{task}</label></div>})}
-                  <textarea value={customtask} onChange={(e) => textareaListen(e)} onKeyPress={event => {
+                  <div class='inform'><img class='binfo' src='/binfo.svg' alt='delete-bin'/><p class='info-text'>Всего в баночку помещается 52 свертка с заданиями. Вы можете выбрать как наши варианты из списка ниже, так и добавить свои</p></div>
+                  <h2>Все задания</h2>
+                  <textarea id='txtarea' value={customtask} onChange={(e) => textareaListen(e)} onKeyPress={event => {
                     if (event.key === 'Enter') {
                         addCustom()
                     }
                     }} placeholder='Cвоё задание'>
                     <button class='add-custom-b' onClick={() => addCustom()}>Добавить</button></textarea>
+                  {tasks.map((task, i) => {return <div><input type='checkbox' checked={checkedTasks.includes(task) ? true : false} onChange={(e) => handleTask(e)} class='totask' id={i} name='alltasks' value={task} /><label class='choosen-task leftct' for={i}>{task}<img class='delete-bin' src='/badd.svg' alt='delete-bin'/></label></div>})}
                 </div>
                 <div class='rightside'>
-                   {checkedTasks.map((task, i) => {return <div class='choosen-task'><h3>{task}</h3><img class='delete-bin' src='/delete.png' onClick={() => deleteTask(task)} alt='delete-bin'/></div>})}
-                   <div class='conwrapper'><button onClick={() => console.log('hhh')} disabled={checkedTasks.length === NEEDEDT ? false : true} class='confirm-button'>Подтвердить</button></div>
+                   <h2>Выбранные задания</h2>
+                   {checkedTasks.map((task, i) => {return <div onClick={() => deleteTask(task)} class='choosen-task leftct'><h3>{task}</h3><img class='delete-bin' src='/bdelete.svg' alt='delete-bin'/></div>})}
+                   <div class='conwrapper'><button onClick={() => sendTasks()} style={{cursor: ''}} class='confirm-button'>Подтвердить</button></div>
                 </div>
                 <div class='rightside-mobile'>
                     <button id='openCart' onClick={() => openCart()} class='open-cart'>Открыть</button>
-                    <div id='theCart' style={{display: 'none'}} class='mobctask'><div class='cart-content'><button style={{display: 'none'}} id='closeCart' class='close-cart' onClick={() => closeCart()}>Скрыть</button>{checkedTasks.map((task, i) => {return <div style={{borderRadius: (i == checkedTasks.length - 1) ? '10px' : '0px'}} class='inmobctask'><h3>{task}</h3><button class='mob-rb' onClick={() => deleteTask(task)}>Удалить</button></div>})}</div></div>
+                    <button class='open-cart mob-send'>Отправить</button>
+                    <div id='theCart' style={{display: 'none'}} class='mobctask'><div class='cart-content'><button style={{display: 'none'}} id='closeCart' class='close-cart' onClick={() => closeCart()}>Скрыть</button>{checkedTasks.map((task, i) => {return <div style={{borderRadius: (i == checkedTasks.length - 1) ? '10px' : '0px'}} class='inmobctask'><h3>{task}</h3><button class='mob-rb' onClick={() => deleteTask(task)}>Удалить</button></div>})}<div class='conwrapper'><button onClick={() => sendTasks()} style={{cursor: ''}} class='confirm-button'>Подтвердить</button></div></div></div>
+                
                 </div>
-                <div class='counter' style={{color: checkedTasks.length === NEEDEDT ? '#0CDC46' : checkedTasks.length < NEEDEDT ? '#FFD662' : '#C41E3A' }}>{checkedTasks.length}</div>
+                <div class='counter' style={{color: checkedTasks.length === NEEDEDT ? '#0CDC46' : checkedTasks.length < NEEDEDT ? '#FFD662' : '#C41E3A' }}><span class={checkedTasks.length > NEEDEDT ? 'blink' : ''}>{checkedTasks.length}</span></div>
             </div>
         </div>
 
