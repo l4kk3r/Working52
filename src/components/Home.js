@@ -85,8 +85,8 @@ const Home = () => {
                 </div>
                 <div class='rightside-mobile'>
                     <button id='openCart' onClick={() => openCart()} class='open-cart'>Открыть</button>
-                    <button class='open-cart mob-send'>Отправить</button>
-                    <div id='theCart' style={{display: 'none'}} class='mobctask'><div class='cart-content'><button style={{display: 'none'}} id='closeCart' class='close-cart' onClick={() => closeCart()}>Скрыть</button>{checkedTasks.map((task, i) => {return <div style={{borderRadius: (i == checkedTasks.length - 1) ? '10px' : '0px'}} class='inmobctask'><h3>{task}</h3><button class='mob-rb' onClick={() => deleteTask(task)}>Удалить</button></div>})}<div class='conwrapper'><button onClick={() => sendTasks()} style={{cursor: ''}} class='confirm-button'>Подтвердить</button></div></div></div>
+                    <button onClick={() => sendTasks()} class='open-cart mob-send'>Отправить</button>
+                    <div id='theCart' style={{display: 'none'}} class='mobctask'><div class='cart-content'><button style={{display: 'none'}} id='closeCart' class='close-cart' onClick={() => closeCart()}>Скрыть</button>{checkedTasks.map((task, i) => {return <div style={{borderRadius: (i == checkedTasks.length - 1) ? '10px' : '0px'}} class='inmobctask'><h3>{task}</h3><button class='mob-rb' onClick={() => deleteTask(task)}>Удалить</button></div>})}<div class='conwrapper'></div></div></div>
                 
                 </div>
                 <div class='counter' style={{color: checkedTasks.length === NEEDEDT ? '#0CDC46' : checkedTasks.length < NEEDEDT ? '#FFD662' : '#C41E3A' }}><span class={checkedTasks.length > NEEDEDT ? 'blink' : ''}>{checkedTasks.length}</span></div>
