@@ -238,6 +238,8 @@ textarea {
     right: 50px;
     font-weight: 600;
     text-transform: uppercase;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.27);
+    background-color: #f1eeee;
 }
 .confirm-button:disabled {
     opacity: 0.5;
