@@ -302,6 +302,7 @@ textarea {
         padding: 5px 10px;
         box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.07);
         top: 80px;
+        width: 100px;
     }
     .close-cart {
         border-radius: 15px;
@@ -352,5 +353,6 @@ textarea {
         left: 45px;
         background: #C6AE97;
         color: white;
+        width: 100px;
     }
 }
