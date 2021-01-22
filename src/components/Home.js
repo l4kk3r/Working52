@@ -76,6 +76,7 @@ const Home = () => {
                   <h2>Все задания</h2>
                   <textarea maxLength={1000} id='txtarea' value={customtask} onChange={(e) => textareaListen(e)} onKeyPress={event => {
                     if (event.key === 'Enter') {
+                        event.preventDefault()
                         addCustom()
                     }
                     }} placeholder='Cвоё задание'>
