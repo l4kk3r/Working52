@@ -34,7 +34,24 @@ const Home = () => {
     }
     
     const textareaListen = (e) => {
-        e.target.value = e.target.value.replace(/\n/g, "").replace(" ", "")
+        e.target.value = e.target.value.replace(/\n/g, "")
+        e.target.value = e.target.value.replace(/ /g, "")
+        e.target.value = e.target.value.replace(/&#32/g, "")
+        e.target.value = e.target.value.replace(/&#160/g, "")
+        e.target.value = e.target.value.replace(/&#8192/g, "")
+        e.target.value = e.target.value.replace(/&#8194/g, "")
+        e.target.value = e.target.value.replace(/&#8195/g, "")
+        e.target.value = e.target.value.replace(/&#8196/g, "")
+        e.target.value = e.target.value.replace(/&#8197/g, "")
+        e.target.value = e.target.value.replace(/&#8198/g, "")
+        e.target.value = e.target.value.replace(/&#8199/g, "")
+        e.target.value = e.target.value.replace(/&#8193/g, "")
+        e.target.value = e.target.value.replace(/&#8200/g, "")
+        e.target.value = e.target.value.replace(/&#8201/g, "")
+        e.target.value = e.target.value.replace(/&#8202/g, "")
+        e.target.value = e.target.value.replace(/&#8232/g, "")
+        e.target.value = e.target.value.replace(/&#8287/g, "")
+        e.target.value = e.target.value.replace(/&#12288/g, "")
         setCustomTask(e.target.value)
         e.target.style.height = 'auto'
         e.target.style.height = e.target.scrollHeight + 2 + "px"
@@ -73,7 +90,7 @@ const Home = () => {
             <div class='tasks-field'>
                 <div class='leftside'>
                   <div class='inform'><img class='binfo' src='/binfo.svg' alt='delete-bin'/><p class='info-text'>Всего в баночку помещается 52 свертка с заданиями. Вы можете выбрать как наши варианты из списка ниже, так и добавить свои</p></div>
-                  <h2>Все задания</h2>
+                  <h2>Всеww задания</h2>
                   <textarea maxLength={1000} id='txtarea' value={customtask} onChange={(e) => textareaListen(e)} onKeyPress={event => {
                     if (event.key === 'Enter') {
                         event.preventDefault()
