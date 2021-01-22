@@ -34,7 +34,7 @@ const Home = () => {
     }
     
     const textareaListen = (e) => {
-        e.target.value = e.target.value.replace(/\n/g, "")
+        e.target.value = e.target.value.replace(/\n/g, "").replace(" ", "")
         setCustomTask(e.target.value)
         e.target.style.height = 'auto'
         e.target.style.height = e.target.scrollHeight + 2 + "px"
@@ -54,10 +54,13 @@ const Home = () => {
     }
 
     const sendTasks = () => {
+        if (toast.isActive('toast')) {
+            return 1;
+        }
         if (checkedTasks.length < 52) {
-            toast.warn(`Вам не хватает заданий. Вы выбрали ${checkedTasks.length} из 52`)
+            toast.warn(`Вам не хватает заданий. Вы выбрали ${checkedTasks.length} из 52`, {toastId: 'toast'})
         } else if (checkedTasks.length > 52) {
-            toast.error(`Вы превысили допустимое количество выбранных заданий (52)`)
+            toast.error(`Вы превысили допустимое количество выбранных заданий (52)`, {toastId: 'toast'})
         }
     }
     
@@ -71,7 +74,7 @@ const Home = () => {
                 <div class='leftside'>
                   <div class='inform'><img class='binfo' src='/binfo.svg' alt='delete-bin'/><p class='info-text'>Всего в баночку помещается 52 свертка с заданиями. Вы можете выбрать как наши варианты из списка ниже, так и добавить свои</p></div>
                   <h2>Все задания</h2>
-                  <textarea maxLength={130} id='txtarea' value={customtask} onChange={(e) => textareaListen(e)} onKeyPress={event => {
+                  <textarea maxLength={1000} id='txtarea' value={customtask} onChange={(e) => textareaListen(e)} onKeyPress={event => {
                     if (event.key === 'Enter') {
                         addCustom()
                     }
